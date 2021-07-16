@@ -36,6 +36,8 @@ if [ "$GIT_REPO" != "" ]; then
     # Remove temporary files    
     rm -rf /opt/jboss/keycloak-source
 
+    echo "***** HOME: $HOME"
+    
     # partial cleanup of keycloak packages
     cd $HOME/.m2/repository/org/keycloak
     rm -rf ./keycloak-server-feature-pack
