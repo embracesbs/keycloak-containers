@@ -33,11 +33,18 @@ if [ "$GIT_REPO" != "" ]; then
 
     tar xfz /opt/jboss/keycloak-source/distribution/server-dist/target/keycloak-*.tar.gz
 
-    # Remove temporary files
-    rm -rf /opt/jboss/maven
+    # Remove temporary files    
     rm -rf /opt/jboss/keycloak-source
-    rm -rf $HOME/.m2/repository
-    
+
+    # partial cleanup of keycloak packages
+    cd $HOME/.m2/repository/org/keycloak
+    rm -rf ./keycloak-server-feature-pack
+    rm -rf ./keycloak-server-dist
+    rm -rf ./keycloak-themes 
+
+    # rm -rf $HOME/.m2/repository
+    # rm -rf /opt/jboss/maven
+        
     mv /opt/jboss/keycloak-* /opt/jboss/keycloak
 else
     echo "Keycloak from [download]: $KEYCLOAK_DIST"
